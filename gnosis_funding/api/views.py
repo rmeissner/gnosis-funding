@@ -17,9 +17,9 @@ root_key = HDKey.from_path(master_key, "m/44'/60'/0'/0/0")
 sender = root_key[-1].public_key.address()
 
 tokens = [
-    ("0x975be7f72cea31fd83d0cb2a197f9136f38696b7", 1),
-    ("0xb3a4bc89d8517e0e2c9b66703d09d3029ffa1e6d", 1),
-    ("0x5f92161588c6178130ede8cbdc181acec66a9731", 1),
+    ("0x975be7f72cea31fd83d0cb2a197f9136f38696b7", 100000),
+    ("0xb3a4bc89d8517e0e2c9b66703d09d3029ffa1e6d", 10000000),
+    ("0x5f92161588c6178130ede8cbdc181acec66a9731", 10000000000000000000),
 ]
 
 
