@@ -122,3 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 FUNDING_ACCOUNT_PHRASE = os.environ.get('FUNDING_ACCOUNT_PHRASE')
+SEND_TOKEN_AMOUNT = int(os.environ.get('SEND_TOKEN_AMOUNT'))
+SEND_ETH_AMOUNT = int(os.environ.get('SEND_ETH_AMOUNT'))

@@ -10,16 +10,16 @@ from two1.bitcoin.utils import bytes_to_str
 
 from gnosis_funding.api.ethereum.transactions import Transaction
 from gnosis_funding.api.ethereum.utils import parse_int_or_hex, int_to_hex, parse_as_bin, is_numeric
-from gnosis_funding.settings import FUNDING_ACCOUNT_PHRASE
+from gnosis_funding.settings import FUNDING_ACCOUNT_PHRASE, SEND_TOKEN_AMOUNT, SEND_ETH_AMOUNT
 
 master_key = HDPrivateKey.master_key_from_mnemonic(FUNDING_ACCOUNT_PHRASE)
 root_key = HDKey.from_path(master_key, "m/44'/60'/0'/0/0")
 sender = root_key[-1].public_key.address()
 
 tokens = [
-    ("0x975be7f72cea31fd83d0cb2a197f9136f38696b7", 100000),
-    ("0xb3a4bc89d8517e0e2c9b66703d09d3029ffa1e6d", 10000000),
-    ("0x5f92161588c6178130ede8cbdc181acec66a9731", 10000000000000000000),
+    ("0x975be7f72cea31fd83d0cb2a197f9136f38696b7", SEND_TOKEN_AMOUNT * 10000),
+    ("0xb3a4bc89d8517e0e2c9b66703d09d3029ffa1e6d", SEND_TOKEN_AMOUNT * 1000000),
+    ("0x5f92161588c6178130ede8cbdc181acec66a9731", SEND_TOKEN_AMOUNT * 1000000000000000000),
 ]
 
 
@@ -76,7 +76,7 @@ def fund_account(request):
     if not address or len(address) != 42 or not address.startswith("0x") or not all(
             c in string.hexdigits for c in address[2:]):
         return Response({"error": "invalid safe address (format: <40 hex chars>)"}, 400)
-    return Response("Watch on " + _build_etherscan_url(_send_transaction(address, value=1000000000000000, gas=21000)))
+    return Response("Watch on " + _build_etherscan_url(_send_transaction(address, value=SEND_ETH_AMOUNT, gas=21000)))
 
 
 @api_view(["POST"])
