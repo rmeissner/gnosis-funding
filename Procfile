@@ -1,1 +1,1 @@
-web: gunicorn service.wsgi --log-file -
+web: gunicorn gnosis_funding.wsgi --log-file -
