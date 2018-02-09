@@ -25,7 +25,9 @@ SECRET_KEY = '8n5g)cywx0u7c+c^4j^@j*b&=059_tta%+#-%mnhk^45+-%*b+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
 
 # Application definition
@@ -118,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+FUNDING_ACCOUNT_PHRASE = os.environ.get('FUNDING_ACCOUNT_PHRASE')

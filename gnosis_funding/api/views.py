@@ -10,9 +10,9 @@ from two1.bitcoin.utils import bytes_to_str
 
 from gnosis_funding.api.ethereum.transactions import Transaction
 from gnosis_funding.api.ethereum.utils import parse_int_or_hex, int_to_hex, parse_as_bin, is_numeric
+from gnosis_funding.settings import FUNDING_ACCOUNT_PHRASE
 
-master_key = HDPrivateKey.master_key_from_mnemonic(
-    "angle tackle horror tomato pizza stool abandon light photo can seek cash")
+master_key = HDPrivateKey.master_key_from_mnemonic(FUNDING_ACCOUNT_PHRASE)
 root_key = HDKey.from_path(master_key, "m/44'/60'/0'/0/0")
 sender = root_key[-1].public_key.address()
 
