@@ -76,7 +76,7 @@ def fund_account(request):
     if not address or len(address) != 42 or not address.startswith("0x") or not all(
             c in string.hexdigits for c in address[2:]):
         return Response({"error": "invalid safe address (format: <40 hex chars>)"}, 400)
-    return Response("Watch on " + _build_etherscan_url(_send_transaction(address, value=SEND_ETH_AMOUNT, gas=21000)))
+    return Response("Watch on " + _build_etherscan_url(_send_transaction(address, value=SEND_ETH_AMOUNT, gas=30000)))
 
 
 @api_view(["POST"])
