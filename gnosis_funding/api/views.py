@@ -40,7 +40,11 @@ def rpc_call(method, params):
 
 
 def rpc_result(method, param):
-    return rpc_call(method, param)["result"]
+    response = rpc_call(method, param)
+    result = response.get("result")
+    if not result:
+        raise Exception(response.get("error", "Unknown error"))
+    return result
 
 
 def estimate_tx(sender, address, value, data):
